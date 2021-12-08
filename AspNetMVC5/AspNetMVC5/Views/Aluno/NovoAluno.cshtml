@@ -1,0 +1,51 @@
+﻿@model AspNetMVC5.Models.Aluno
+
+<h2>Novo Aluno</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.AntiForgeryToken()
+        <h4>Informe os dados do aluno: </h4>
+        <hr />
+
+        @Html.ValidationSummary(excludePropertyErrors:false, message:"Encontrammos erros na validação: ",htmlAttributes: new { @class = "text-danger"})
+
+        <div class="form-group">
+            @Html.LabelFor(expression: model => Model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+            
+            <div class="col-md-10">
+                @Html.EditorFor(expression: model => Model.Nome, additionalViewData: new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(expression: model => model.Nome, validationMessage: "", htmlAttributes: new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(expression: model => Model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            
+            <div class="col-md-10">
+                @Html.EditorFor(expression: model => Model.Email, additionalViewData: new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(expression: model => model.Email, validationMessage: "", htmlAttributes: new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(expression: model => Model.CPF, htmlAttributes: new { @class = "control-label col-md-2" })
+            
+            <div class="col-md-10">
+                @Html.EditorFor(expression: model => Model.CPF, additionalViewData: new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(expression: model => model.CPF, validationMessage: "", htmlAttributes: new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="enviar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
